@@ -10,7 +10,7 @@
         })(jQuery);
     </script>
     <script type="text/javascript">
-        var hostName = "http://192.168.86.226";
+        //var hostName = "http://192.168.86.226";
         var hostName = "http://localhost";
         var xslDoc = null;
         var xmlDoc = null;
@@ -20,7 +20,7 @@
                 try {
                     var xml_name = hostName + "/Test/xml/memberXML.asp";
                     var xmlDoc = $.loadXMLDoc(xml_name);
-                    alert($.xml2str(xmlDoc));
+                    $.alert(xml_name,$.xml2str(xmlDoc));
                     var a = 1;
                 } catch (e) {
                     alert(e.message);

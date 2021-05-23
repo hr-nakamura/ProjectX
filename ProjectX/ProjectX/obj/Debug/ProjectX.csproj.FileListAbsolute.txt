@@ -52,7 +52,6 @@ E:\GitHub\hr-nakamura\ProjectX\ProjectX\bin\roslyn\VBCSCompiler.exe
 E:\GitHub\hr-nakamura\ProjectX\ProjectX\bin\roslyn\VBCSCompiler.exe.config
 E:\GitHub\hr-nakamura\ProjectX\ProjectX\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 E:\GitHub\hr-nakamura\ProjectX\ProjectX\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\GitHub\hr-nakamura\ProjectX\ProjectX\obj\Debug\ProjectX.csprojAssemblyReference.cache
 E:\GitHub\hr-nakamura\ProjectX\ProjectX\obj\Debug\ProjectX.csproj.CoreCompileInputs.cache
 E:\GitHub\hr-nakamura\ProjectX\ProjectX\obj\Debug\ProjectX.csproj.CopyComplete
 E:\GitHub\hr-nakamura\ProjectX\ProjectX\obj\Debug\ProjectX.dll
