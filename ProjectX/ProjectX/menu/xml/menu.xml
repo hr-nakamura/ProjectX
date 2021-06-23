@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root name="EMG">
-  <menu name="TEST" memo="" >
-    <menu name="test" memo="" func="url" value="/ProjectX/_test/test.html"/>
-  </menu>
+	<menu name="監査" memo="" >
+		<menu name="kansa" memo="" func="url" value="/ProjectX/home/kansa.html"/>
+	</menu>
+	<menu name="TEST" memo="" >
+		<menu name="test" memo="" func="url" value="/ProjectX/_test/test.html"/>
+		<menu name="home" memo="" func="url" value="/ProjectX/home/test.html"/>
+	</menu>
 </root>
 
 

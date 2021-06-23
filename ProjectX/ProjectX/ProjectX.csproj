@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -6,20 +7,22 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{92468B6D-A269-4AC4-B279-F654C5325313}</ProjectGuid>
+    <ProjectGuid>{7ECB7DFE-5654-476A-9267-FABAE2DA34B9}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ProjectX</RootNamespace>
     <AssemblyName>ProjectX</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44349</IISExpressSSLPort>
+    <IISExpressSSLPort>44320</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
@@ -39,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -53,14 +63,156 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="home\kansa.html" />
+    <Content Include="home\manageMenu.asp" />
+    <Content Include="home\manageMenu.html" />
+    <Content Include="home\memo.txt" />
+    <Content Include="home\Menu.asp" />
+    <Content Include="home\projectBBS\bbsMain.asp" />
+    <Content Include="home\projectBBS\bbsMain.html" />
+    <Content Include="home\projectBBS\jquery.complete.js" />
+    <Content Include="home\projectBBS\new.gif" />
+    <Content Include="home\projectBBS\new7.gif" />
+    <Content Include="home\projectBBS\projectList - コピー.xsl" />
+    <Content Include="home\projectBBS\projectList.xsl" />
+    <Content Include="home\projectBBS\test1.html" />
+    <Content Include="home\projectBBS\viewProject.asp" />
+    <Content Include="home\test.html" />
+    <Content Include="_debug\jquery.my.debug.js" />
+    <Content Include="home\_hostInfo\json2.js" />
+    <Content Include="home\_hostInfo\memberInfo.asp" />
+    <Content Include="home\_images\alert.png" />
+    <Content Include="home\_images\arrow_l1.gif" />
+    <Content Include="home\_images\arrow_r1.gif" />
+    <Content Include="home\_images\bg00.gif" />
+    <Content Include="home\_images\bg01.gif" />
+    <Content Include="home\_images\confirm.png" />
+    <Content Include="home\_images\error.png" />
+    <Content Include="home\_images\info.png" />
+    <Content Include="home\_inc\cmn.inc" />
+    <Content Include="home\_inc\json.inc" />
+    <Content Include="home\_inc\sub_cmn.xsl" />
+    <Content Include="home\_inc\sub_jscript.xsl" />
+    <Content Include="home\_inc\確定日付.inc" />
+    <Content Include="home\_menu\memo.txt" />
+    <Content Include="home\_menu\menu.css" />
+    <Content Include="home\_menu\menu.txt" />
+    <Content Include="home\_menu\menu.xml" />
+    <Content Include="home\_menu\menu.xslt" />
+    <Content Include="home\_menu\menu_sub\kansa.png" />
+    <Content Include="home\_menu\menu_sub\kansa.xml" />
+    <Content Include="home\_menu\sample.txt" />
+    <Content Include="home\_menu\test.xslt" />
+    <Content Include="home\_menu\work.html" />
+    <Content Include="home\_Scripts\AuthCheck.js" />
+    <Content Include="home\_Scripts\bootstrap\bootstrap-select.js" />
+    <Content Include="home\_Scripts\bootstrap\bootstrap.min.css" />
+    <Content Include="home\_Scripts\bootstrap\fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="home\_Scripts\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="home\_Scripts\cmn.js" />
+    <Content Include="home\_Scripts\DocumentWindow.js" />
+    <Content Include="home\_Scripts\easySelectbox.css" />
+    <Content Include="home\_Scripts\easySelectbox.js" />
+    <Content Include="home\_Scripts\easySelectbox.min.js" />
+    <Content Include="home\_Scripts\encoding.js" />
+    <Content Include="home\_Scripts\jquery-1.12.4.js" />
+    <Content Include="home\_Scripts\jquery-1.9.1.min.js" />
+    <Content Include="home\_Scripts\jquery.complete.js" />
+    <Content Include="home\_Scripts\jquery.complete2.js" />
+    <Content Include="home\_Scripts\jquery.inView.js" />
+    <Content Include="home\_Scripts\jquery.kansa.Query.js" />
+    <Content Include="home\_Scripts\jquery.my.frame.js" />
+    <Content Include="home\_Scripts\jquery.my.Query.js" />
+    <Content Include="home\_Scripts\jquery.my.searcher.js" />
+    <Content Include="home\_Scripts\jquery.searcher.js" />
+    <Content Include="home\_Scripts\jquery.stopWatch.js" />
+    <Content Include="home\_Scripts\json.js" />
+    <Content Include="home\_Scripts\json2.js" />
+    <Content Include="home\_Scripts\promise-7.0.4.min.js" />
+    <Content Include="home\_Scripts\store.min.js" />
+    <Content Include="home\_xml\projectBBS\projectDataCsv.inc.asp" />
+    <Content Include="home\_xml\projectBBS\projectData_XML.asp" />
+    <Content Include="home\_xml\projectBBS\projectNum.xml" />
+    <Content Include="home\_xml\projectBBS\projectNum_Full.xml" />
+    <Content Include="home\_xml\営業情報\保有リソース\manPower_XML.asp" />
+    <Content Include="home\_xml\営業情報\保有リソース_協力会社\manPower_XML.asp" />
+    <Content Include="home\_xml\売上予測\売上予実_分類.inc.asp" />
+    <Content Include="home\_xml\売上予測\売上予実_分類_XML.asp" />
+    <Content Include="home\_xml\売上予測\売上予実_新規.inc.asp" />
+    <Content Include="home\_xml\売上予測\売上予実_新規_XML.asp" />
+    <Content Include="home\_xml\売上予測\売上予実_部門.inc.asp" />
+    <Content Include="home\_xml\売上予測\売上予実_部門_XML.asp" />
+    <Content Include="home\_xml\売上予測\売上目標_部門.inc.asp" />
+    <Content Include="home\_xml\売上予測\売上目標_部門_XML.asp" />
+    <Content Include="home\_xml\要員情報\要員一覧_XML.asp" />
+    <Content Include="home\_xml\費用予測\EMG費用状況.inc.asp" />
+    <Content Include="home\_xml\費用予測\費用状況_XML.asp" />
+    <Content Include="home\_xml\部門収支\部門収支_XML.asp" />
+    <Content Include="home\営業情報\保有リソース\xsl\sub_cmn.xsl" />
+    <Content Include="home\営業情報\保有リソース\xsl\sub_jscript.xsl" />
+    <Content Include="home\営業情報\保有リソース\xsl\グループ_保有リソース.xsl" />
+    <Content Include="home\営業情報\保有リソース\xsl\グループ_保有リソース_合計.xsl" />
+    <Content Include="home\営業情報\保有リソース\xsl\グループ_実工数.xsl" />
+    <Content Include="home\営業情報\保有リソース\xsl\グループ_計画値.xsl" />
+    <Content Include="home\営業情報\保有リソース\xsl\協力会社_保有リソース.xsl" />
+    <Content Include="home\営業情報\保有リソース\xsl\協力会社_累計.xsl" />
+    <Content Include="home\営業情報\保有リソース\xsl\本部_保有リソース.xsl" />
+    <Content Include="home\営業情報\保有リソース\xsl\本部_保有リソース_合計.xsl" />
+    <Content Include="home\営業情報\保有リソース\xsl\本部_実工数.xsl" />
+    <Content Include="home\営業情報\保有リソース\xsl\本部_計画値.xsl" />
+    <Content Include="home\営業情報\保有リソース\協力会社費用_main.html" />
+    <Content Include="home\営業情報\保有リソース\協力会社費用_累計_main.html" />
+    <Content Include="home\営業情報\保有リソース\本部要員数.html" />
+    <Content Include="home\営業情報\保有リソース\本部要員数_main.html" />
+    <Content Include="home\売上予測\memo.txt" />
+    <Content Include="home\売上予測\売上予実_分類.html" />
+    <Content Include="home\売上予測\売上予実_分類\売上予実_分類.xsl" />
+    <Content Include="home\売上予測\売上予実_分類\売上予実_分類_main.html" />
+    <Content Include="home\売上予測\売上予実_新規.html" />
+    <Content Include="home\売上予測\売上予実_新規\売上予実_分類.xsl" />
+    <Content Include="home\売上予測\売上予実_新規\売上予実_新規_main.html" />
+    <Content Include="home\売上予測\売上予実_部門.html" />
+    <Content Include="home\売上予測\売上予実_部門\売上予実_部門.xsl" />
+    <Content Include="home\売上予測\売上予実_部門\売上予実_部門_main.html" />
+    <Content Include="home\売上予測\売上目標_部門.html" />
+    <Content Include="home\売上予測\売上目標_部門\売上目標_部門_main.html" />
+    <Content Include="home\要員情報\要員一覧\xsl\要員一覧.xsl" />
+    <Content Include="home\要員情報\要員一覧\要員一覧.html" />
+    <Content Include="home\部門収支\account.css" />
+    <Content Include="home\部門収支\EMG収支計画.html" />
+    <Content Include="home\部門収支\xsl\EMG部門収支.xsl" />
+    <Content Include="home\部門収支\xsl\OLD_部門_リスト_select.xsl" />
+    <Content Include="home\部門収支\xsl\sub_cmn.xsl" />
+    <Content Include="home\部門収支\xsl\sub_jscript.xsl" />
+    <Content Include="home\部門収支\xsl\本社費配賦.xsl" />
+    <Content Include="home\部門収支\xsl\統括組織表.xsl" />
+    <Content Include="home\部門収支\xsl\要員一覧.xsl" />
+    <Content Include="home\部門収支\xsl\部門_リスト_select.xsl" />
+    <Content Include="home\部門収支\xsl\部門収支.xsl" />
+    <Content Include="home\部門収支\xsl\間接部門内訳.xsl" />
+    <Content Include="home\部門収支\グループ収支計画.html" />
+    <Content Include="home\部門収支\統括収支計画.html" />
+    <Content Include="home\部門収支\部門収支.html" />
+    <Content Include="home\部門収支\部門収支計画.html" />
     <Content Include="menu\images\bg00.gif" />
     <Content Include="menu\images\EM.png" />
     <Content Include="menu\index.html" />
@@ -80,7 +232,51 @@
     <Content Include="_Test\_Scripts\promise-7.0.4.min.js" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="_debug\debug.ashx.cs">
+      <DependentUpon>debug.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="_debug\Debug.cs" />
+    <Compile Include="home\_Util\iniFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="menu\Scripts\jquery-1.9.1.min.map" />
+    <Content Include="_debug\debug.ashx" />
+    <Content Include="home\_Scripts\bootstrap\fonts\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="home\_Scripts\bootstrap\fonts\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="home\_Scripts\bootstrap\fonts\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="home\_Scripts\bootstrap\fonts\font-awesome\fontawesome-webfont.woff2" />
+    <Content Include="home\_Scripts\bootstrap\fonts\font-awesome\FontAwesome.otf" />
+    <Content Include="home\_Scripts\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="home\_Scripts\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="home\_Scripts\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="home\_Scripts\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="home\費用予測\費用予測.json" />
+    <Content Include="App_Data\system.ini" />
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="home\_Contents\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -95,9 +291,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>59404</DevelopmentServerPort>
+          <DevelopmentServerPort>57054</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44349/</IISUrl>
+          <IISUrl>http://localhost:44320/ProjectX/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -107,6 +303,12 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
