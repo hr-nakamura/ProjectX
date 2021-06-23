@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="/WebApi/project/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+    <script src="/WebApi/project/_home/Scripts/json2.js" type="text/javascript"></script>
+    <script src="/WebApi/project/_home/Scripts/jquery.kansa.Query.js" type="text/javascript"></script>
+    <script src="/WebApi/project/_home/debug/jquery.my.debug.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var WebApi_url = "http://192.168.86.226/WebApi/project/api/values";
+        var WebApi_url = "http://localhost/WebApi/project/api/values";
+        var WebApi_url_json = "http://192.168.86.25/WebApi/project/api/json";
+        var Send_JsonData = {
+            Item: "Item", Func: "Func", Json: JSON.stringify({ a: "aaaa", b: "bbbbb" })
+        };
+
+    </script>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            $.debug("Start");
+            var hostName = (window.location.hostname == "localhostX" ? "" : "http://" + window.location.hostname);
+            var x = window.location.pathname.split("/");
+            alert(hostName);
+            WebApi_url = hostName + "/WebApi/project/api/values";
+            //WebApi_url_json = "/WebApi/project/api/json";
+            window.status = "[" + WebApi_url + "]"
+        }
+    </script>
+    <script type="text/javascript">
+        function call_ajax_func(func, url, options) {
+
+            // 受信側でidを指定したときは設定しないとエラーとなる
+            // 漢字は渡せない
+            //url += "?name5=漢字&Mssage=ABCDEF";
+            // ajax:dataで渡したらモデュールでも受信できるが引数指定でも受信できる
+            // 漢字も OK
+            // Get では「data」を替えると複数のパラメータで呼べる
+
+            $.debug("call_ajax_func[" + func + "]");
+            window.status = "call_ajax_func[" + func + "]" + url;
+            var result = $.ajax({
+                url: url,
+                type: func,
+                data: options,
+                dataType: 'text',
+                dataFilter: function (data, type) {
+                    return (data);
+                },
+                //contentType: "application/json",
+                //contentType: "application/xml",
+                //contentType: "text/plain",
+                async: false
+            }).done(function (data, status, xhr) {
+                returnValue = data.replace(/\"$/, "").replace(/^\"/, "");
+                $.debug(returnValue);
+            }).fail(function (xhr, status, error) {
+                returnValue = status;
+                window.status = status;
+                $.debug("error:" + xhr.statusText);
+            });
+            return (returnValue);
+        }
+        function call_ajax_get(url, options) {
+
+            // 受信側でidを指定したときは設定しないとエラーとなる
+            // 漢字は渡せない
+            //url += "?name5=漢字&Mssage=ABCDEF";
+            // ajax:dataで渡したらモデュールでも受信できるが引数指定でも受信できる
+            // 漢字も OK
+            // Get では「data」を替えると複数のパラメータで呼べる
+
+            $.debug("call_ajax_get");
+            window.status = "call_ajax_get";
+            var result = $.ajax({
+                url: url,
+                type: "GET",
+                data: options,
+                dataType: 'text',
+                dataFilter: function (data, type) {
+                    return (data);
+                },
+                //contentType: "application/xml",
+                //contentType: "text/plain",
+                async: false
+            }).done(function (data, status, xhr) {
+                returnValue = data.replace(/\"$/, "").replace(/^\"/, "");
+            }).fail(function (xhr, status, error) {
+                returnValue = status;
+                $.debug("error:" + xhr.statusText);
+                window.status = "error:" + xhr.statusText;
+            });
+            return (returnValue);
+        }
+        function call_ajax_get_json(url, options) {
+            alert(url);
+            // 受信側でidを指定したときは設定しないとエラーとなる
+            // 漢字は渡せない
+            //url += "?name5=漢字&Mssage=ABCDEF";
+            // ajax:dataで渡したらモデュールでも受信できるが引数指定でも受信できる
+            // 漢字も OK
+            // Get では「data」を替えると複数のパラメータで呼べる
+
+            $.debug("call_ajax_get_json");
+            window.status = "call_ajax_get_json][" + url;
+            var result = $.ajax({
+                url: url,
+                type: "GET",
+                data: options,
+                dataType: 'json',
+                dataFilter: function (data, type) {
+                    return (data);
+                },
+                //contentType: "application/json",
+                //contentType: "text/plain",
+                async: false
+            }).done(function (data, status, xhr) {
+                returnValue = data;
+            }).fail(function (xhr, status, error) {
+                returnValue = status;
+                $.debug("error:" + xhr.statusText);
+                window.status = "error:" + xhr.statusText + "][" + url;
+            });
+            return (returnValue);
+        }
+
+
+
+
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $(".user_json_get").on("click", function () {
+                var work = call_ajax_get_json(WebApi_url_json);
+                $.alert.json(work);
+
+            });
+
+//=============================================================
+            $(".user_get").on("click", function () {
+                var Str = call_ajax_get(WebApi_url);
+                StrOut(Str);
+            });
+            $(".user_get_A").on("click", function () {
+                var Str = call_ajax_func("GET", WebApi_url, Send_JsonData);
+                StrOut(Str);
+            });
+            $(".user_get_B").on("click", function () {
+                var Str = call_ajax_func("GET", WebApi_url, Send_JsonData);
+                StrOut(Str);
+            });
+            $(".user_post").on("click", function () {
+                var Str = call_ajax_func("POST", WebApi_url, Send_JsonData);
+                StrOut(Str);
+            });
+            $(".user_put_start").on("click", function () {
+                Send_JsonData.Item = "item.item2.exec";
+                Send_JsonData.Func = "user_put_start";
+                var Str = call_ajax_func("PUT", WebApi_url, Send_JsonData);
+                StrOut(Str);
+            });
+            $(".user_put_stop").on("click", function () {
+                Send_JsonData.Item = "item.item2.exec";
+                Send_JsonData.Func = "user_put_stop";
+                var Str = call_ajax_func("PUT", WebApi_url, Send_JsonData);
+                StrOut(Str);
+            });
+            $(".user_put_read").on("click", function () {
+                Send_JsonData.Item = "item.item2.exec";
+                Send_JsonData.Func = "user_put_read";
+                var Str = call_ajax_func("PUT", WebApi_url, Send_JsonData);
+                StrOut(Str);
+            });
+            $(".user_delete").on("click", function () {
+                var Str = call_ajax_func("DELETE", WebApi_url, Send_JsonData);
+                StrOut(Str);
+            });
+
+        });
+        function StrOut(xmlStr){
+
+            $.alert("xmlDoc", xmlStr);
+            var xmlDoc = $.str2xml(xmlStr);
+            var xslDoc = $.loadXMLDoc("test.xsl");
+            var work = $(xmlDoc).transformNode(xslDoc);
+            var a = 1;
+            $("data", xmlStr).each(function (i, elem) {
+                $.alert(elem.id, $(elem).attr("class"), $(elem).text());
+            var a = 1;
+            })
+        }
+
+    </script>
+
+</head>
+<body>
+    Presence
+    <span class="location"></span>
+    <br />
+    <input type="button" class="user_json_get" value="user(GET) json" />
+    <br />
+    <hr />
+    <br />
+    <input type="button" class="user_get" value="user(GET)" />
+    <br />
+    <input type="button" class="user_get_A" value="user(GET_A)" />
+    <br />
+    <input type="button" class="user_get_B" value="user(GET_B)" />
+    <br />
+    <input type="button" class="user_post" value="user(POST)" />
+    <br />
+    <input type="button" class="user_put_start" value="user(PUT-Start)" />
+    <br />
+    <input type="button" class="user_put_stop" value="user(PUT-Stop)" />
+    <br />
+    <input type="button" class="user_put_read" value="user(PUT-Read)" />
+    <br />
+    <input type="button" class="user_delete" value="user(DELETE)" />
+    <br />
+    <br />
+</body>
+</html>

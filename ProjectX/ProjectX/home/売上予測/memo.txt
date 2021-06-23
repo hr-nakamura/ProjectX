@@ -1,0 +1,63 @@
+﻿売上予実_新規.html
+    var para = {
+        year: "2018",
+        fix: 70,
+        yosoku: 3
+        }
+
+	売上予実_新規_main.html
+        var para = {
+            year: "",
+            fix: 70,
+            yosoku: 3
+            }
+		売上予実_新規_XML.asp
+            var year   = $queryString("year", 2018);
+            var actual = $queryString("actual", 12);
+            var fix    = $queryString("fix", 70);
+			
+            売上予実_新規.inc.asp
+
+		売上予実_新規.xsl
+
+
+
+	var yosokuCnt
+	var d = new Date()
+	var yy = d.getFullYear()
+	var mm = d.getMonth()+1
+	var dd = d.getDate()
+	var yymm = yy * 100 + mm								// 今月のyymm
+
+	var OKday = dayChk(d,adjustDayCnt)
+
+==	確定日が本日より前の時：前月
+==	確定日が本日より後の時：今月
+	yymm = ( parseInt(dd) < parseInt(OKday) ? yymmAdd(yymm, -1) : yymmAdd(yymm, 0))		// データ有効月の計算(12日以前は前々月)
+
+==	指定月まで実績
+	var b_yymm = ((year-1)*100) + 10
+	var actualCnt = yymmDiff( b_yymm, yymm )
+
+	if(actualCnt >= 12) actualCnt = 12
+
+==	予測の指定なしの時
+		12か月から実績月数を引く
+	if(Request.QueryString("yosoku").count == 0){
+		yosokuCnt = 12 - actualCnt
+		}
+==	予測の指定ありの時
+		指定を使用
+	else{
+		yosokuCnt = parseInt(Request.QueryString("yosoku") )
+		if(yosokuCnt == 0){
+			//	すべて計画
+			actualCnt = 0
+			yosokuCnt = 0
+			}
+		else if( yosokuCnt < 0 ){
+			// 残り全て予測
+			yosokuCnt = 12 - actualCnt
+			}
+		}
+
